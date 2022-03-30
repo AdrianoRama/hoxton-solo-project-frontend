@@ -1,0 +1,15 @@
+.app__votebox {
+    width: 100vw;
+    height: 91.5vh;
+    background: var(--color-darkGray);
+    border-top: 1px solid var(--color-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+}
+
+.app__votebox h1 {
+    color: var(--color-milk);
+}

@@ -1,0 +1,43 @@
+
+
+.app__submitsong {
+    width: 100vw;
+    height: 91.5vh;
+    background: var(--color-darkGray);
+    border-top: 1px solid var(--color-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+}
+
+.app__submitsong h1 {
+    color: var(--color-milk);
+}
+
+form {
+   display: flex;
+   flex-direction: column; 
+   gap: 3rem;
+   width: 35%;
+   justify-content: center;
+   align-items: center;
+}
+
+.app__submitsong input {
+    color: var(--color-milk);
+    width: 35rem;
+}
+
+.app__submitsong button {
+    color: var(--color-milk);
+    outline: 1px solid var(--color-blue);
+    transition: .5s ;
+}
+
+.app__submitsong button:hover {
+    color: var(--color-blue);
+}
+
+

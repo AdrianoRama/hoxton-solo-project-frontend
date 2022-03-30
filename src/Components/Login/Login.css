@@ -1,0 +1,59 @@
+
+
+.app__login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-darkGray);
+}
+
+.app__login-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-blue);
+    height: 50%;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    animation: blueBox 3s ease-in-out infinite;
+}
+
+@keyframes blueBox {
+    25% {
+        border: none;
+    }
+
+    50% {
+        border: 1px solid var(--color-blue);
+    }
+
+    75% {
+        border: none;
+    }
+
+    100% {
+        border: 1px solid var(--color-blue)
+
+    }
+}
+
+.app__login-container h1 {
+    color: var(--color-blue);
+    font-family: var(--font-base);
+}
+
+.app__login-container input {
+    color: var(--color-milk);
+}
+
+.app__login-container button {
+    color: var(--color-milk);
+    transition: .5s;
+}
+
+.app__login-container button:hover {
+    color: var(--color-blue);
+}
