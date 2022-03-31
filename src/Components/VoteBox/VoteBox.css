@@ -1,15 +1,50 @@
 .app__votebox {
     width: 100vw;
-    height: 91.5vh;
+    height: 90.6vh;
     background: var(--color-darkGray);
     border-top: 1px solid var(--color-blue);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 10rem;
+    gap: 5rem;
 }
 
 .app__votebox h1 {
     color: var(--color-milk);
+    padding-top: 5rem;
+}
+
+.app__votebox-table {
+    border: 1px solid var(--color-black);
+    border-radius: .5rem;
+    width: 50%;
+    height: 50%;
+    overflow-y: auto;
+}
+
+.app__votebox-expl {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    color: var(--color-milk);
+    background: var(--color-black);
+    font-family: var(--font-base);
+}
+
+.app__votebox-row {
+    display: flex;
+    width: 100%;
+    height: 12%;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    color: var(--color-darkGray);
+    background: var(--color-milk);
+}
+
+.app__votebox-row button {
+    color: var(--color-darkGray);
 }

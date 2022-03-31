@@ -1,0 +1,32 @@
+.clock {
+    position: relative;
+    margin: auto;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(270deg,var(--color-black), var(--color-darkgray));
+    height: 100%;
+    width: 100%;
+    color: var(--color-blue);
+    text-shadow: 1px 1px 7px;
+    border-radius: 15px;
+    border: 2px solid var(--color-milk);
+    box-shadow: 0 0 5px 10px;
+}
+
+.clock section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.clock section p {
+    font-size: 3rem;
+}
+
+.clock section small {
+    color: var(--color-milk);
+    text-shadow: none;
+}
