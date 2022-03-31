@@ -1,5 +1,6 @@
 import { Button, TextField } from '@material-ui/core'
 import { SendOutlined } from '@material-ui/icons'
+import { motion } from 'framer-motion'
 import React from 'react'
 import './SubmitSong.css'
 
@@ -12,7 +13,11 @@ export default function SubmitSong() {
     return (
         <div className='app__submitsong'>
             <div className="app__submitsong-title">
-                <h1 className='p__cormorant'>Submit your vibe to the VoteBox</h1>
+                <motion.h1
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1 }}
+                    className='p__cormorant'>Submit your vibe to the VoteBox</motion.h1>
             </div>
             <form onSubmit={logIn} action="">
                 <TextField required type={'text'} placeholder='Your Name' />

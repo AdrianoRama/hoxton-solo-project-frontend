@@ -1,5 +1,6 @@
 import { Button } from '@material-ui/core'
 import { HowToVote, WhereToVote } from '@material-ui/icons'
+import { motion } from 'framer-motion'
 import React, { useEffect, useRef, useState } from 'react'
 import Timer from '../Timer/Timer'
 import './VoteBox.css'
@@ -9,7 +10,8 @@ export default function VoteBox() {
     return (
         <div className='app__votebox'>
             <div className="app__votebox-title">
-                <h1 className='p__cormorant'>Time left for voting your favorite vibe:</h1>
+                <h1
+                    className='p__cormorant'>Time left for voting your favorite vibe:</h1>
             </div>
             <Timer />
             <div className="app__votebox-table">

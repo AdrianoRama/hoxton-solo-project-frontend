@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import './Timer.css'
 
@@ -47,7 +48,11 @@ export default function Timer({ }) {
         <Fragment>
             <section className="timer-container">
                 <section className="timer">
-                    <div className="clock">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1 }}
+                        className="clock">
                         <section>
                             <p>{textDay}</p>
                             <small>Days</small>
@@ -66,7 +71,7 @@ export default function Timer({ }) {
                             <p>{textSecond}</p>
                             <small>Seconds</small>
                         </section>
-                    </div>
+                    </motion.div>
                 </section>
             </section>
         </Fragment>
