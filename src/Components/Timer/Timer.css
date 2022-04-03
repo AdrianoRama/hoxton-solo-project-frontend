@@ -1,10 +1,10 @@
 .clock {
     position: relative;
     margin: auto;
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(270deg,var(--color-black), var(--color-darkgray));
+    background: linear-gradient(270deg, var(--color-black), var(--color-darkgray));
     height: 100%;
     width: 100%;
     color: var(--color-blue);
@@ -29,4 +29,32 @@
 .clock section small {
     color: var(--color-milk);
     text-shadow: none;
+}
+
+.winner {
+    color: var(--color-darkGray);
+    font-family: var(--font-base);
+    animation: winner 5s ease-in-out infinite;
+}
+
+@keyframes winner {
+    25% {
+        color: var(--color-blue);
+    }
+
+    50% {
+        color: var(--color-darkGray);
+    }
+
+    75% {
+        color: var(--color-blue);
+    }
+
+    100% {
+        color: var(--color-darkGray)
+    }
+}
+
+.announce {
+    font-family: var(--font-alt);
 }

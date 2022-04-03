@@ -8,9 +8,9 @@ const defaultRemainingTime = {
     hours: '00'
 }
 
-export default function Timer({ }) {
+export default function Timer({ setWinner }) {
 
-    const countDate = new Date('March 31, 2022 03:00:00').getTime()
+    const countDate = new Date('April 3, 2022 17:43:00').getTime()
     const [stop, setStop] = useState(false)
 
     const [now, setNow] = useState(new Date().getTime())
@@ -30,50 +30,47 @@ export default function Timer({ }) {
     let textSecond = Math.floor((gap % minute) / second)
 
     useEffect(() => {
-        setInterval(() => {
+        let interval = setInterval(() => {
             setNow(new Date().getTime())
         }, 1000)
     }, [])
 
 
-    if (textMinute < 0 && textSecond < 0) {
-        textDay = 0
-        textHour = 0
-        textMinute = 0
-        textSecond = 0
-    }
 
-
-    return (
-        <Fragment>
-            <section className="timer-container">
-                <section className="timer">
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1 }}
-                        className="clock">
-                        <section>
-                            <p>{textDay}</p>
-                            <small>Days</small>
-                        </section>
-                        <section>
-                            <p>{textHour}</p>
-                            <small>Hours</small>
-                        </section>
-                        <span>:</span>
-                        <section>
-                            <p>{textMinute}</p>
-                            <small>Minutes</small>
-                        </section>
-                        <span>:</span>
-                        <section>
-                            <p>{textSecond}</p>
-                            <small>Seconds</small>
-                        </section>
-                    </motion.div>
+    if (countDate < now) {
+        setWinner(true)
+        return <h1 className='announce'>The winner is:<span className='winner'> Adriano - Nale</span>, chosen by <span className='winner'>Adriano</span></h1>
+    } else
+        return (
+            <Fragment>
+                <section className="timer-container">
+                    <section className="timer">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1 }}
+                            className="clock">
+                            <section>
+                                <p>{textDay}</p>
+                                <small>Days</small>
+                            </section>
+                            <section>
+                                <p>{textHour}</p>
+                                <small>Hours</small>
+                            </section>
+                            <span>:</span>
+                            <section>
+                                <p>{textMinute}</p>
+                                <small>Minutes</small>
+                            </section>
+                            <span>:</span>
+                            <section>
+                                <p>{textSecond}</p>
+                                <small>Seconds</small>
+                            </section>
+                        </motion.div>
+                    </section>
                 </section>
-            </section>
-        </Fragment>
-    )
+            </Fragment>
+        )
 }
