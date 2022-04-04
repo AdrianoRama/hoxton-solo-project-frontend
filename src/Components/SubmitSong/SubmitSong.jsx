@@ -1,7 +1,7 @@
 import { Button, TextField } from '@material-ui/core'
 import { SendOutlined } from '@material-ui/icons'
 import { motion } from 'framer-motion'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './SubmitSong.css'
 
 function SubmitedVibe() {
@@ -39,7 +39,7 @@ function SubmitForm({ postSong }) {
             </form></>)
 }
 
-export default function SubmitSong({ user, songs, setSongs, submitedSong, setSubmitedSong }) {
+export default function SubmitSong({ user, songs, setSongs }) {
 
 
 
@@ -56,7 +56,7 @@ export default function SubmitSong({ user, songs, setSongs, submitedSong, setSub
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: user.id,
+                userId: user.id,
                 clientName: clientName,
                 songTitle: songTitle,
                 artist: artist,
@@ -67,23 +67,20 @@ export default function SubmitSong({ user, songs, setSongs, submitedSong, setSub
             .then(resp => resp.json())
             .then(data => {
                 if (data.error) {
-                    alert('Oops, something went wrong.')
+                    alert(data.error)
                 } else {
-                    setSongs(...songs, data)
+                    setSongs([...songs, data])
                 }
             })
     }
 
 
-    let songsId = songs?.map(song => song.id)
+    let hasUserSubmitedSong = songs.find(song => song.userId === user.id)
 
-    if (songsId.includes(user?.id)) {
-        setSubmitedSong(true)
-    }
 
     return (
         <div className='app__submitsong'>
-            {submitedSong ? <SubmitedVibe /> : <SubmitForm postSong={postSong} />}
+            {hasUserSubmitedSong ? <SubmitedVibe /> : <SubmitForm postSong={postSong} />}
         </div>
     )
 }

@@ -9,7 +9,6 @@ import VoteBox from './Components/VoteBox/VoteBox'
 function App() {
   const [user, setUser] = useState(null)
   const [songs, setSongs] = useState([])
-  const [submitedSong, setSubmitedSong] = useState(false)
   const [announcement, setAnnouncement] = useState(false)
 
 
@@ -41,10 +40,9 @@ function App() {
           <Navbar setUser={setUser}></Navbar>
           <Routes>
             <Route index element={<Navigate replace to='/votebox' />} />
-            <Route path='/yourvibe' element={(
-              <>
-                <SubmitSong user={user} songs={songs} setSongs={setSongs} submitedSong={submitedSong} setSubmitedSong={setSubmitedSong} />
-              </>)} />
+            <Route path='/yourvibe' element={
+              <SubmitSong user={user} songs={songs} setSongs={setSongs} />
+            } />
             <Route path='/votebox' element={<VoteBox songs={songs} setSongs={setSongs} user={user} setAnnouncement={setAnnouncement} announcement={announcement} />} />
           </Routes></>
 
