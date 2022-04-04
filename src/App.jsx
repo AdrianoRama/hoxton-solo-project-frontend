@@ -10,10 +10,8 @@ function App() {
   const [user, setUser] = useState(null)
   const [songs, setSongs] = useState([])
   const [submitedSong, setSubmitedSong] = useState(false)
-  const [winner, setWinner] = useState(false)
+  const [announcement, setAnnouncement] = useState(false)
 
-
-  console.log('user:', user)
 
   useEffect(() => {
     fetch(`http://localhost:4000/songs`).then(resp => resp.json())
@@ -47,7 +45,7 @@ function App() {
               <>
                 <SubmitSong user={user} songs={songs} setSongs={setSongs} submitedSong={submitedSong} setSubmitedSong={setSubmitedSong} />
               </>)} />
-            <Route path='/votebox' element={<VoteBox songs={songs} user={user} setWinner={setWinner} winner={winner} />} />
+            <Route path='/votebox' element={<VoteBox songs={songs} setSongs={setSongs} user={user} setAnnouncement={setAnnouncement} announcement={announcement} />} />
           </Routes></>
 
       }

@@ -8,9 +8,9 @@ const defaultRemainingTime = {
     hours: '00'
 }
 
-export default function Timer({ setWinner }) {
+export default function Timer({ setAnnouncement }) {
 
-    const countDate = new Date('April 3, 2022 17:43:00').getTime()
+    const countDate = new Date('April 5, 2022 01:43:00').getTime()
     const [stop, setStop] = useState(false)
 
     const [now, setNow] = useState(new Date().getTime())
@@ -38,8 +38,7 @@ export default function Timer({ setWinner }) {
 
 
     if (countDate < now) {
-        setWinner(true)
-        return <h1 className='announce'>The winner is:<span className='winner'> Adriano - Nale</span>, chosen by <span className='winner'>Adriano</span></h1>
+        setAnnouncement(true)
     } else
         return (
             <Fragment>

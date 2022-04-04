@@ -52,6 +52,11 @@
 
 .app__votebox-row button {
     color: var(--color-darkGray);
+    transition: .5s;
+}
+
+.app__votebox-row button:hover {
+    color: var(--color-blue);
 }
 
 .vote-nr {
@@ -62,6 +67,7 @@
     width: 100vw;
     height: 90.5vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
