@@ -36,8 +36,8 @@ export default function VoteBox({ songs, setSongs, user, setAnnouncement, announ
                 if (data.error) {
                     alert('Oops, something went wrong.')
                 } else {
-                    setVotedSongs([...votedSongs, data.id])
-                    // setSongs(...songs)
+                    // setVotedSongs([...votedSongs, data.id])
+                    setSongs(data)
                 }
             })
     }
@@ -69,7 +69,7 @@ export default function VoteBox({ songs, setSongs, user, setAnnouncement, announ
                     <p>Votes</p>
                 </div>
                 {songs.map(song => {
-                    if (song.id === user?.id) {
+                    if (song.userId === user?.id) {
                         return (<div key={song.id} className="app__votebox-row">
                             <h3>{song.songTitle}</h3>
                             <h3>{song.artist}</h3>
