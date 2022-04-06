@@ -41,6 +41,13 @@
     font-family: var(--font-base);
 }
 
+.app__login-container p {
+    color: var(--color-milk);
+    font-family: var(--font-base);
+    letter-spacing: 0.04em;
+    text-transform: capitalize;
+}
+
 .app__login-container input {
     color: var(--color-milk);
 }

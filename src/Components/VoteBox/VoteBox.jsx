@@ -3,6 +3,7 @@ import { HowToVote, WhereToVote } from '@material-ui/icons'
 import { motion } from 'framer-motion'
 import React, { useEffect, useRef, useState } from 'react'
 import Timer from '../Timer/Timer'
+import AlertDialog from './AlertDialog'
 import './VoteBox.css'
 
 export default function VoteBox({ songs, setSongs, user, setAnnouncement, announcement }) {
@@ -76,7 +77,6 @@ export default function VoteBox({ songs, setSongs, user, setAnnouncement, announ
             )
     }, [])
 
-    console.log(userVotedSongs)
 
     let disableVoting = userVotedSongs?.votedSongs.map(vote => vote.songId)
 
@@ -108,25 +108,20 @@ export default function VoteBox({ songs, setSongs, user, setAnnouncement, announ
                     <p>Votes</p>
                 </div>
                 {songs.map(song => {
-                    // if (song.userId === user?.id) {
-                    //     return (<div key={song.id} className="app__votebox-row">
-                    //         <h3>{song.songTitle}</h3>
-                    //         <h3>{song.artist}</h3>
-                    //         <a href={song.songUrl} target="_blank">
-                    //             <Button className='linkBtn'
-                    //                 variant='outlined'
-                    //             >Link</Button>
-                    //         </a>
-                    //         <h3>{song.clientName}</h3>
-                    //         <Button className='voteBtn' disabled
-                    //             variant='outlined'
-                    //             endIcon={<HowToVote />}
-                    //         >Vote</Button>
-                    //         <h3 className='vote-nr'>{song.votes}</h3>
-                    //     </div>)
-                    // }
-
-                    return (<div key={song.id} className="app__votebox-row">
+                    if (song.userId === user?.id) {
+                        return (<div key={song.id} className="app__votebox-row">
+                            <h3>{song.songTitle}</h3>
+                            <h3>{song.artist}</h3>
+                            <a href={song.songUrl} target="_blank">
+                                <Button className='linkBtn'
+                                    variant='outlined'
+                                >Link</Button>
+                            </a>
+                            <h3>{song.clientName}</h3>
+                            <AlertDialog userVotedSongs={userVotedSongs} songs={songs} setSongs={setSongs} />
+                            <h3 className='vote-nr'>{song.votes}</h3>
+                        </div>)
+                    } return (<div key={song.id} className="app__votebox-row">
                         <h3>{song.songTitle}</h3>
                         <h3>{song.artist}</h3>
                         <a href={song.songUrl} target="_blank">
@@ -135,7 +130,7 @@ export default function VoteBox({ songs, setSongs, user, setAnnouncement, announ
                             >Link</Button>
                         </a>
                         <h3>{song.clientName}</h3>
-                        <Button className='voteBtn' disabled={disableVoting?.includes(song.id) || song.userId === user?.id
+                        <Button className='voteBtn' disabled={disableVoting?.includes(song.id)
                         } onClick={() => {
                             voteSong(song.id, song.votes)
                             votedSong(user.id, song.id)

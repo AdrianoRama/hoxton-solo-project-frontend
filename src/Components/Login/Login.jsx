@@ -43,7 +43,12 @@ export default function Login({ user, setUser }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
-                >VibezBox</motion.h1>
+                >VibezBox.</motion.h1>
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1 }}
+                >A place where your Vote really matters</motion.p>
                 <motion.form
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

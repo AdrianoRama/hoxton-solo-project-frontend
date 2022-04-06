@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  background-color: var(--color-darkGray);
+}
+
 .p__opensans {
   font-family: var(--font-alt);
   color: var(--color-milk);
@@ -20,7 +24,7 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: capitalize;
-  font-feature-settings: 'tnum' on, 'lnum' on;
+  font-feature-settings: 'tnum'on, 'lnum'on;
   line-height: 29.9px;
   font-size: 23px;
 }
