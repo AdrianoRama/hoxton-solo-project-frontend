@@ -10,7 +10,7 @@ const defaultRemainingTime = {
 
 export default function Timer({ setAnnouncement }) {
 
-    const countDate = new Date('April 5, 2022 01:43:00').getTime()
+    const countDate = new Date('April 6, 2022 18:44:00').getTime()
     const [stop, setStop] = useState(false)
 
     const [now, setNow] = useState(new Date().getTime())
@@ -36,9 +36,9 @@ export default function Timer({ setAnnouncement }) {
     }, [])
 
 
-
     if (countDate < now) {
         setAnnouncement(true)
+        return null
     } else
         return (
             <Fragment>

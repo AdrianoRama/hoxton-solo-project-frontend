@@ -9,13 +9,25 @@
     gap: 5rem;
 }
 
+*::-webkit-scrollbar {
+    width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--color-blue);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--color-black);
+    border-radius: 10rem;
+}
+
 .app__votebox h1 {
     color: var(--color-milk);
     padding-top: 5rem;
 }
 
 .app__votebox-table {
-    border: 1px solid var(--color-black);
     border-radius: .5rem;
     width: 60%;
     height: 50%;
@@ -42,21 +54,30 @@
     height: 15%;
     justify-content: space-between;
     align-items: center;
-    color: var(--color-darkGray);
-    background: var(--color-milk);
+    color: var(--color-milk);
+    background: var(--color-darkGray);
     border: 1px solid var(--color-black);
     margin-bottom: .5rem;
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
-.app__votebox-row button {
-    color: var(--color-darkGray);
+.app__votebox-row .voteBtn {
+    color: var(--color-milk);
     transition: .5s;
 }
 
-.app__votebox-row button:hover {
+.app__votebox-row .voteBtn:hover {
     color: var(--color-blue);
+}
+
+.app__votebox-row .linkBtn {
+    color: var(--color-blue);
+    transition: .5s;
+}
+
+.app__votebox-row .linkBtn:hover {
+    color: var(--color-black);
 }
 
 .vote-nr {
