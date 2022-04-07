@@ -32,9 +32,7 @@ export default function Login({ user, setUser }) {
             })
     }
 
-    // if (user) {
-    //     navigate(`/votebox`)
-    // }
+
 
     return (
         <div className='app__login'>
