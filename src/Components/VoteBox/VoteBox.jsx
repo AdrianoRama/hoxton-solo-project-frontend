@@ -80,6 +80,10 @@ export default function VoteBox({ songs, setSongs, user, setAnnouncement, announ
 
     let disableVoting = userVotedSongs?.votedSongs.map(vote => vote.songId)
 
+    let sortedSongs = songs.sort((a, b) => {
+        return b.votes - a.votes;
+    })
+
 
     if (announcement) {
         return (<div className='app__votebox'>
