@@ -4,10 +4,10 @@ import { motion } from 'framer-motion'
 import React, { useEffect, useRef, useState } from 'react'
 import Timer from '../Timer/Timer'
 import AlertDialog from './AlertDialog'
+import CustomizedTables from './Table'
 import './VoteBox.css'
 
 export default function VoteBox({ songs, setSongs, user, setAnnouncement, announcement }) {
-    const [userVotedSongs, setUserVotedSongs] = useState(null)
 
     let winner = {}
 
@@ -22,67 +22,6 @@ export default function VoteBox({ songs, setSongs, user, setAnnouncement, announ
     }
 
     getWinner()
-
-
-    function voteSong(id, votes) {
-
-        fetch(`http://localhost:4000/songs/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                votes: votes + 1
-            })
-        })
-            .then(resp => resp.json())
-            .then(data => {
-                if (data.error) {
-                    alert('Oops, something went wrong.')
-                } else {
-                    // setVotedSongs([...votedSongs, data.id])
-                    setSongs(data)
-                }
-            })
-    }
-
-    function votedSong(id, songId) {
-        console.log("songId:", songId)
-
-        fetch('http://localhost:4000/votedsongs', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: id,
-                songId: songId
-            })
-        })
-            .then(resp => resp.json())
-            .then(data => {
-                if (data.error) {
-                    alert(data.error)
-                } else {
-                    setUserVotedSongs(data)
-                }
-            })
-    }
-
-
-    useEffect(() => {
-        fetch(`http://localhost:4000/users/${user.id}`).then(resp => resp.json())
-            .then(userFromServer =>
-                setUserVotedSongs(userFromServer)
-            )
-    }, [])
-
-
-    let disableVoting = userVotedSongs?.votedSongs.map(vote => vote.songId)
-
-    let sortedSongs = songs.sort((a, b) => {
-        return b.votes - a.votes;
-    })
 
 
     if (announcement) {
@@ -104,7 +43,9 @@ export default function VoteBox({ songs, setSongs, user, setAnnouncement, announ
             </div>
             <Timer setAnnouncement={setAnnouncement} />
             <div className="app__votebox-table">
-                <div className="app__votebox-expl">
+                <CustomizedTables songs={songs} setSongs={setSongs} user={user} />
+
+                {/* <div className="app__votebox-expl">
                     <p>Song Title</p>
                     <p>Artist Name</p>
                     <p>Song Link</p>
@@ -122,7 +63,9 @@ export default function VoteBox({ songs, setSongs, user, setAnnouncement, announ
                                 >Link</Button>
                             </a>
                             <h3>{song.clientName}</h3>
-                            <AlertDialog userVotedSongs={userVotedSongs} songs={songs} setSongs={setSongs} />
+                            <div>
+                                <AlertDialog userVotedSongs={userVotedSongs} songs={songs} setSongs={setSongs} />
+                            </div>
                             <h3 className='vote-nr'>{song.votes}</h3>
                         </div>)
                     } return (<div key={song.id} className="app__votebox-row">
@@ -137,14 +80,14 @@ export default function VoteBox({ songs, setSongs, user, setAnnouncement, announ
                         <Button className='voteBtn' disabled={disableVoting?.includes(song.id)
                         } onClick={() => {
                             voteSong(song.id, song.votes)
-                            votedSong(user.id, song.id)
+                            sendVotedSong(user.id, song.id)
                         }}
                             variant='outlined'
                             endIcon={<HowToVote />}
                         >Vote</Button>
                         <h3 className='vote-nr'>{song.votes}</h3>
                     </div>)
-                })}
+                })} */}
             </div>
         </div>
     )

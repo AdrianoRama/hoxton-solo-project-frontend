@@ -10,7 +10,7 @@ const defaultRemainingTime = {
 
 export default function Timer({ setAnnouncement }) {
 
-    const countDate = new Date('April 8, 2022 15:59:00').getTime()
+    const countDate = new Date('April 8, 2022 23:10:00').getTime()
     const [stop, setStop] = useState(false)
 
     const [now, setNow] = useState(new Date().getTime())
@@ -33,6 +33,7 @@ export default function Timer({ setAnnouncement }) {
         let interval = setInterval(() => {
             setNow(new Date().getTime())
         }, 1000)
+        return () => clearInterval(interval)
     }, [])
 
 

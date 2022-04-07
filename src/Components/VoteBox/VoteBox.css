@@ -46,7 +46,9 @@
     font-family: var(--font-base);
     padding-left: 1rem;
     padding-right: 1rem;
+    min-width: 650px;
 }
+
 
 .app__votebox-row {
     display: flex;
@@ -60,12 +62,14 @@
     margin-bottom: .5rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    min-width: 650px;
 }
 
 .app__votebox-row .voteBtn {
     color: var(--color-milk);
     transition: .5s;
 }
+
 
 .app__votebox-row .voteBtn:hover {
     color: var(--color-blue);
@@ -91,4 +95,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.tableEl {
+    font-family: var(--font-base);
 }
