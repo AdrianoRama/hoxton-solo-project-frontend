@@ -6,6 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
+import { DeleteForeverOutlined } from '@material-ui/icons';
 
 export default function AlertDialog({ userVotedSongs, songs, setSongs }) {
     const [open, setOpen] = useState(false);
@@ -38,8 +39,10 @@ export default function AlertDialog({ userVotedSongs, songs, setSongs }) {
 
     return (
         <div>
-            <Button color='error' variant="outlined" onClick={handleClickOpen}>
-                X
+            <Button
+                endIcon={<DeleteForeverOutlined />}
+                color='error' variant="outlined" onClick={handleClickOpen}>
+                DELETE
             </Button>
             <Dialog
                 open={open}
