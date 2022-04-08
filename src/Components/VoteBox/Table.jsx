@@ -42,29 +42,7 @@ export default function CustomizedTables({ songs, setSongs, user }) {
     const [userVotedSongs, setUserVotedSongs] = useState(null)
 
 
-    function voteSong(id, votes) {
-
-        fetch(`http://localhost:4000/songs/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                votes: votes + 1
-            })
-        })
-            .then(resp => resp.json())
-            .then(data => {
-                if (data.error) {
-                    alert('Oops, something went wrong.')
-                } else {
-                    // setVotedSongs([...votedSongs, data.id])
-                    setSongs(data)
-                }
-            })
-    }
-
-    function sendVotedSong(id, songId) {
+    function sendVotedSong(id, songId, votes) {
         console.log("songId:", songId)
 
         fetch('http://localhost:4000/votedsongs', {
@@ -74,7 +52,8 @@ export default function CustomizedTables({ songs, setSongs, user }) {
             },
             body: JSON.stringify({
                 id: id,
-                songId: songId
+                songId: songId,
+                votes: votes
             })
         })
             .then(resp => resp.json())
@@ -82,7 +61,8 @@ export default function CustomizedTables({ songs, setSongs, user }) {
                 if (data.error) {
                     alert(data.error)
                 } else {
-                    setUserVotedSongs(data)
+                    setUserVotedSongs(data.user)
+                    setSongs(data.songs)
                 }
             })
     }
@@ -153,8 +133,8 @@ export default function CustomizedTables({ songs, setSongs, user }) {
                                 <StyledTableCell align="right"><div>
                                     <Button className='voteBtn' disabled={disableVoting?.includes(song.id)
                                     } onClick={() => {
-                                        voteSong(song.id, song.votes)
-                                        sendVotedSong(user.id, song.id)
+                                        // voteSong(song.id, song.votes)
+                                        sendVotedSong(user.id, song.id, song.votes)
                                     }}
                                         variant='outlined'
                                         endIcon={<HowToVote />}
